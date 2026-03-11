@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:guru_hadir_app/screen/absensi/absensi_screen.dart';
+import 'package:guru_hadir_app/screen/beranda/beranda_screen.dart';
+import 'package:guru_hadir_app/screen/jadwal/jadwal_screen.dart';
+import 'package:guru_hadir_app/screen/profil/profil_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,17 +20,19 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  final List<Widget> _pages = const [
+    BerandaScreen(),
+    AbsensiScreen(),
+    JadwalScreen(),
+    ProfilScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Guru Hadir App')),
-      body: Center(
-        child: Text(
-          'Main Screen',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-      ),
+      body: _pages[selectedIndex],
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex,
@@ -35,18 +41,18 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: colorScheme.primary,
         unselectedItemColor: colorScheme.onSurfaceVariant,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'beranda'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
           BottomNavigationBarItem(
             icon: Icon(Icons.check_circle_outlined),
-            label: 'absensi',
+            label: 'Absensi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
-            label: 'jadwal',
+            label: 'Jadwal',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),
-            label: 'profil',
+            label: 'Profil',
           ),
         ],
       ),

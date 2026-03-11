@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_hadir_app/screen/main_screen.dart';
+import 'package:guru_hadir_app/static/navigation_route.dart';
 import 'package:guru_hadir_app/style/theme/main_theme.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Guru Hadir App',
       theme: MainTheme.lightTheme,
       darkTheme: MainTheme.darkTheme,
-      home: const MainScreen(),
+      initialRoute: NavigationRoute.mainRoute.path,
+      routes: {NavigationRoute.mainRoute.path: (context) => const MainScreen()},
     );
   }
 }
